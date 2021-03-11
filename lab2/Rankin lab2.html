@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8"/>
+   <style>
+   
+   </style>
+   <title>IT 2320 - Lab 2</title>
+   <pre>
+   <script>
+      "use strict";
+	  
+	  // set up an array and initialize the first two values
+	  var fibArray = [];
+	  fibArray[0] = 0;
+	  fibArray[1] = 1;
+	  
+	  // declare a variable for the size of the squence 
+	  var fibNum = 0;
+	  
+	  // prompt user for how many 
+	  // check that fibNum >= 3
+	  while (fibNum<3) {
+         fibNum = prompt ("Enter number number for sequence");
+         if (fibNum <3) { 
+            alert( "Entry must be a valid number greater than 2");
+	     }
+      }	  
+	  
+	  // write the values into the array
+	  // You start at 2 because the first two values are already there
+      for (var i=2; i<fibNum; i++) { 
+	      console.log(i);
+          fibArray[i] = fibArray[i-1] + fibArray[i-2];
+	  }
+	  
+	  // read from the array and print values to screen
+	  // another for loop 
+      for (i=0; i<fibNum; i++) {
+                document.writeln(fibArray[i]);
+	  }
+	  
+	  // calculate golden ratio and display it
+	  //  last number / 2nd last number
+	  var ratio = fibArray[fibNum-1] / fibArray[fibNum-2];
+	  document.write("ratio = " + ratio);
+	 </script>
+   </pre>
+</head>
+<body>
+   <h2>Rankin - IT 2320 - Lab 2</h2>
+
+</body>
+
+</html>
