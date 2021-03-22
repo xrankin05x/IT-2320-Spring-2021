@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rankin Lab 4 - Form Processing</title>
+    <style>
+	   .redtext {color:red;}
+	   .blacktext {color:black;}
+	</style>
+      </head>
+         <script>
+   
+             "use strict";  
+             function processForm() {
+                   var fname = document.getElementById ("fname").value;
+                   var lname = document.getElementById ("lname").value;
+                   var address1 = document.getElementById ("address1").value;
+                   var address2 = document.getElementById ("address2").value;
+                   var city = document.getElementById ("city").value;
+                   var state = document.getElementById ("state").value;
+                   var zipcode = document.getElementById ("zipcode").value;
+                      		   var gender = "";
+				   if (document.getElementById ("male").value=="male") { 
+				       gender="male";
+				   }
+				   if (document.getElementById ("female").value=="female") { 
+				       gender="female";
+				   }
+                                   
+                   var dob = document.getElementById ("dob").value;
+                   var mstatus = document.getElementById ("mstatus").value;                  
+                   var sname = document.getElementById ("sname").value;
+                   var email = document.getElementById ("email").value;
+                   var phone = document.getElementById ("phone").value;
+                   var password = document.getElementById ("password").value;
+                   var password2 = document.getElementById ("password2").value;
+
+
+
+
+
+              var formGood = true;
+              if (password != password2) {
+                 formGood = false;
+                 document.getElementById("password2").className = 'redtext';
+              } else {
+                 document.getElementById("password2").className = 'blacktext';
+              }
+
+              if (password != "") {
+                 formGood = false;
+                 document.getElementById("password").className = 'redtext';
+              } else {
+                 document.getElementById("password").className = 'blacktext';
+              }
+			  
+			  if (fname=="") {
+                 formGood = false;
+                 document.getElementById ("fnameLabel").className = 'redtext';
+              } else {
+                 document.getElementById ("fnameLabel").className = 'blacktext';
+              }
+			  
+			  if (lname=="") {
+                 formGood = false;
+                 document.getElementById ("lnameLabel").className = 'redtext';
+              } else {
+                 document.getElementById ("lnameLabel").className = 'blacktext';
+              }
+			  
+			  if (address1=="") {
+                 formGood = false;
+                 document.getElementById ("address1Label").className = 'redtext';
+              } else {
+                 document.getElementById ("address1Label").className = 'blacktext';
+              }
+			  
+			  if (address2=="") {
+                 formGood = false;
+                 document.getElementById ("address2Label").className = 'redtext';
+              } else {
+                 document.getElementById ("address2Label").className = 'blacktext';
+              }
+                          
+			  if (city=="") {
+                 formGood = false;
+                 document.getElementById ("cityLabel").className = 'redtext';
+              } else {
+                 document.getElementById ("cityLabel").className = 'blacktext';
+              }             
+                          if (state=="") {
+                 formGood = false;
+                 document.getElementById ("stateLabel").className = 'redtext';
+              } else {
+                 document.getElementById ("stateLabel").className = 'blacktext';
+              }
+                 if (gender=="") {
+                 formGood = false;
+                 document.getElementById ("genderLabel").className = 'redtext';
+              } else {
+                 document.getElementById ("genderLabel").className = 'blacktext';
+              }   
+
+                   if (zipcode=="") {
+                 formGood = false;
+                 document.getElementById ("zipcodeLabel").className = 'redtext';
+              } else {
+                 document.getElementById ("zipcodeLabel").className = 'blacktext';
+              }   
+                  if (gender=="") {
+                 formGood = false;
+                 document.getElementById ("genderLabel").className = 'redtext';
+              } else {
+                 document.getElementById ("genderLabel").className = 'blacktext';
+              }   
+                     
+                 if (dob=="") {
+                 formGood = false;
+                 document.getElementById ("dobLabel").className = 'redtext';
+              } else {
+                 document.getElementById ("dobLabel").className = 'blacktext';
+              }  
+
+                 if (mstatus=="") {
+                 formGood = false;
+                 document.getElementById ("mstatusLabel").className = 'redtext';
+              } else {
+                 document.getElementById ("mstatusLabel").className = 'blacktext';
+              }
+
+                  if (sname=="") {
+                 formGood = false;
+                 document.getElementById ("snameLabel").className = 'redtext';
+              } else {
+                 document.getElementById ("snameLabel").className = 'blacktext';
+              }
+
+                 if (email=="") {
+                 formGood = false;
+                 document.getElementById ("emailLabel").className = 'redtext';
+              } else {
+                 document.getElementById ("emailLabel").className = 'blacktext';
+              }
+                  if (phone=="") {
+                 formGood = false;
+                 document.getElementById ("phoneLabel").className = 'redtext';
+              } else {
+                 document.getElementById ("phoneLabel").className = 'blacktext';
+              }
+
+                  if (password=="") {
+                 formGood = false;
+                 document.getElementById ("passwordLabel").className = 'redtext';
+              } else {
+                 document.getElementById ("passwordLabel").className = 'blacktext';
+              }
+
+                  if (password2=="") {
+                 formGood = false;
+                 document.getElementById ("password2Label").className = 'redtext';
+              } else {
+                 document.getElementById ("password2Label").className = 'blacktext';
+              }
+                     
+           	    if (formGood) {
+		         document.getElementById ("myForm").submit();
+			  } else {
+			      document.getElementById ("errorMesg").innerHTML = "Please fix the errors below...";
+			}
+
+                            
+                 }     
+  
+              function mstatusChange() {
+		   var mstatus = document.getElementById("mstatus").value;
+		   if (mstatus == "single") {
+                          document.getElementById ("sname").disabled = true;
+		   } else {
+			    document.getElementById ("sname").disabled = false;
+		   }
+
+               }   	   
+                  window.onload = function() {
+                       document.getElementById("register").onclick = processForm;
+		       document.getElementById("mstatus").onchange = mstatusChange;                  
+                    //$("reset").onclick = resetForm;
+        }
+         </script>
+     </head>
+
+      <body>
+      <main>
+        <h1>Please correct the following errors:</h1>
+        <h2> Rankin - IT 2320-Lab 4 </h2>
+		<h2 id="errorMesg" class="redtext"></h2>
+                 
+     <form id="myForm" action="http://www.waynedog.net/formreader.php" method="post"></form>  
+            <div>
+                <label for="fname" id="fnameLabel">First Name:</label>
+                <input type="text" name="fname " id="fname">
+                <label for="lname" id="lnameLabel">Last Name:</label>
+                <input type="text" name="lname " id="lname"><br></br>
+                <span></span>
+           </div>
+               <label for="address1" id="address1Label">Address:</label>
+               <input type="address" name="address" id="address1">
+               <label for="address2" id="address2Label">Suite or Apt:</label>
+               <input type="text" name="address2" id="address2"><br></br>
+            <div>
+                <label for="city" id="cityLabel">City:</label>
+                <input type="text" name="city " id="city">
+                 
+               <label for="state" id="stateLabel">State:</label>
+               <select id="state" name="state" id="state">>            
+                
+                 <option value="">
+                 Select a state</option>
+                 <option value="AL">Alabama</option>
+                 <option value="AK">Alaska</option>
+                 <option value="AZ">Arizona</option>
+                 <option value="AR">Arkansas</option>
+                 <option value="CA">California</option>
+                 <option value="CO">Colorado</option>
+                 <option value="CT">Connecticut</option>
+                 <option value="DE">Delaware</option>
+                 <option value="DC">Dist of Columbia</option>
+                 <option value="FL">Florida</option>
+                 <option value="GA">Georgia</option>
+                 <option value="HI">Hawaii</option>
+                 <option value="ID">Idaho</option>
+                 <option value="IL">Illinois</option>
+                 <option value="IN">Indiana</option>
+                 <option value="IA">Iowa</option>
+                 <option value="KS">Kansas</option>
+                 <option value="KY">Kentucky</option>
+                 <option value="LA">Louisiana</option>
+                 <option value="ME">Maine</option>
+                 <option value="MD">Maryland</option>
+                 <option value="MI">Michigan</option>
+                 <option value="MN">Minnesota</option>
+                 <option value="MS">Mississippi</option>
+                 <option value="MO">Missouri</option>
+                 <option value="MT">Montana</option>
+                 <option value="NE">Nebraska</option>
+                 <option value="NV">Nevada</option>
+                 <option value="NH">New Hampshire</option>
+                 <option value="NJ">New Jersey</option>
+                 <option value="NM">New Mexico</option>
+                 <option value="NY">New York</option>
+                 <option value="NC">North Carolina</option>
+                 <option value="ND">North Dakota</option>
+                 <option value="OH">Ohio</option>
+                 <option value="OK">Oklahoma</option>
+                 <option value="OR">Oregon</option>
+                 <option value="PA">Pennsylvania</option>
+                 <option value="RI">Rhode Island</option>
+                 <option value="SC">South Carolina</option>
+                 <option value="SD">South Dakota</option>
+                 <option value="TN">Tennessee</option>
+                 <option value="TX">Texas</option>
+                 <option value="UT">Utah</option>
+                 <option value="VT">Vermont</option>
+                 <option value="VA">Virginia</option>
+                 <option value="WA">Washington</option>
+                 <option value="WV">West Virginia</option>
+                 <option value="WI">Wisconsin</option>
+                 <option value="WY">Wyoming</option>
+                  </select>                  
+                  <br></br>
+            </div>
+
+            <div>
+                <label for="zipcode" id="zipcodeLabel">ZIP code:</label>
+                <input ="text" name="zipcode" id="zipcode"><br></br>  
+
+             </div>
+
+                       
+             <div>
+                 <label for="gender" id="genderLabel"> Gender:</label>
+                 <input ="radio" name="gender" id="gender">
+                 <input type="radio" id="male" name ="gender" value="male">
+                 <label for="male">Male</label>
+                 <input type="radio" id="female" name ="gender" value="female">
+                 <label for="female">Female</label><span>*</span>
+
+                  <label for="dob" id="dobLabel">Birthdate:</label>
+                  <input type="date" id="dob" name="dob">
+                  </select><br></br>
+
+              </div>
+              <div>  
+                    <label for="mstatus" id="mstatusLabel" >Martial Status:</label>              
+                    <select id="mstatus">
+			<option value=""> </option>
+                        <option value="chooseOne">Choose One</option>
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                    </select>
+               
+                    <label for="sname" id="snameLabel">Spouse:</label>
+                    <input type="text" name="sname" id="sname"><br></br>
+                         
+                    <span></span>
+               </div>
+              
+              <div>
+                <label for="email" id="emailLabel">Email:</label>
+                <input type="text" name="emailLabel " id="email">
+                <span>*</span>
+           
+                <label for="phone" id="phoneLabel">Phone:</label>
+                <input type="text" name="phoneLabel " id="phone"> <br></br>
+                <span></span>
+               
+               </div>
+               <div>
+
+                <label for="password" id="passwordLabel">Password:</label>
+                <input type="password" name="password " id="password">
+                </select>                
+                         
+                <label for="password2" id="password2Label">Confirm Password:</label>
+                <input type="text" name="password2" id="password2"><br></br>
+                </select>                
+                <span></span>
+           
+            </div>
+           
+            <div>              
+                <label>&nbsp;</label>  
+                <input type="button" id="register" value="REGISTER"</button>
+                <input type="button" id="reset" value="RESET"</button>
+            </div>
+
+        </form>
+       </script>
+    </main>
+   
+           
+</body>
