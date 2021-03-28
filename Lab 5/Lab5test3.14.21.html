@@ -1,0 +1,92 @@
+<html>
+    <head>
+	<style>
+	      ul { display: none;}
+	</style>
+	
+      <script>
+	     var count=5;
+		 var delay=5;
+		 var timer, timer2;
+		 var startTimer;
+         
+         var $ = function (id) {return document.getElementById(id); };
+
+         window.onload = function () {
+                var listNode = $("image_list");
+                var captionNode = $("caption");
+                var imageNode = $("image");  
+   
+               var links = listNode.getElementsByTagName("a");
+       
+               var i, linkNode, image;
+               var imageCache = [];
+               for (i = 0; i < links.length; i++) {
+               linkNode = links[i];      
+               image = new Image();
+               image.src = linkNode.getAttribute("href");
+               image.title = linkNode.getAttribute("title");
+               imageCache[imageCache.length] = image;
+          }
+
+            // Slide show			
+               var imageCounter = 0;
+			   startTimer= function() {
+			  
+               timer = setInterval(
+                   function() { 
+                      imageCounter = (imageCounter + 1) % imageCache.length;
+                      image = imageCache[imageCounter];
+                      imageNode.src = image.src;
+                      captionNode.firstChild.nodeValue = image.title;
+
+                     },
+                       1000 * delay);
+		        timer2= setInterval (
+				  function() {
+				     if (count==1) {
+					    count=delay;
+					}
+					else{
+					  count--;
+					}
+					$("timerCount").innerHTML=count;
+				  }, 1000); 
+			}	
+              startTimer();			
+            };
+
+    function resetTimer ()  {
+	   delay= parseInt($("timerVal").value);
+	   count= delay;
+	   $("timerCount").innerHTML=count;
+	   clearInterval(timer);
+	   clearInterval(timer2);
+	   startTimer();
+	 } 
+	 
+          
+    </script>
+        <title>Presidents</title>
+	
+    </head>
+         <body>
+    <main>
+	  <h2>Kimberly Rankin - IT 2320 - Lab 5</h2>
+        <h1>Presidents</h1>
+        <ul id="image_list">
+          <li><a href="images/adams.jpg" title="Adams"></a></li> 
+          <li><a href="images/jackson.jpg" title="Jackson"></a></li>
+          <li><a href="images/jefferson.jpg" title="Jefferson"></a></li> 
+          <li><a href="images/madison.jpg" title="Madison"></a></li>
+          <li><a href="images/washington.jpg" title="Washington"></a></li> 
+        </ul>
+             Timer (seconds): <input type="text" id="timerVal" value="5" onchange= "resetTimer()"><br/><br/> 
+        <p><img src="images/adams.jpg" alt="Presidents" id="image"></p>
+        
+	<h2 id="caption"> Adams</h2>
+	     <h2 id="timerCount">5</h2>
+      </main>
+	
+</body>
+</html>
