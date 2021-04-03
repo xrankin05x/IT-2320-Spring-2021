@@ -1,0 +1,31 @@
+<html>
+<head>
+      <title>Lab 9 Guy Walking</title>
+	  <style> 
+	  img{
+	  position:absolute;
+	  display:none;
+	  }
+	  </style>
+</head>
+<body>
+        <button id="start"> Start</button> 
+    <p>     
+	      <img src="lab9-guy-walking.gif" id="lab9-guy-walking"> 
+	   </p>
+	   
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+	 <script>
+	     
+		 
+		  $("button").click(function(){
+			  $("img").fadeIn(1000); 
+			  $("img").animate({left: $(window).width()-400}, 3000);
+			  $("img").animate({left: 0}, 3000);
+			  $("img").fadeOut(1000); 
+		 }); 
+		</script>
+	 
+         	 
+</body>
+</html>
