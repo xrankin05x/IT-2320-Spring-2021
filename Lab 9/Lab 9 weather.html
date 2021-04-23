@@ -1,0 +1,41 @@
+
+
+<h2>Kim Rankin- IT 2310 -Lab 9</h2>
+<body>
+  <label for="zip_code">ZIP code:</label>
+    <input type="text" name="zip_code" id="zip_code"> 
+    <button type="button" id="submit" >SUBMIT</button>
+	 <p id="city"></p>    
+	 <p id="condition"></p> 
+	 <p id="temperature"></p> 
+     <p id="wind"></p> 
+     <p id="humidity"></p>
+     <p id="minmax"></p> 
+	<script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+	function getWeather(){
+		var zipCode = $('#zip_code').val();		
+		
+		$.ajax({
+		url: "http://api.openweathermap.org/data/2.5/weather?zip="+zip_code +",us&appid= 45417a009cc94f4ae5011de0a75f7b7d&units=Fahrenheit",
+		method: "GET",
+		dataType: "json",
+		})
+		.done(function (weatherResponse) {
+		console.log(weatherResponse);
+      $('#city').html("City: "+weatherResponse.city);	
+	  $('#condition').html("Condition: "+weatherResponse.condition );
+	  $('#temperature').html("Temperature: "+weatherResponse.temperature);
+	  $('#wind').html("Wind speed and direction: "+weatherResponse.wind.speed+" "+weatherResponse.wind.direction);
+	  $('#humidity').html("Humidity: "+weatherResponse.humidity);
+	  $('#minmax').html("High/Low: "+weatherResponse.temperature.max+"/"+weatherResponse.temperature.min);
+		 });
+    }
+  // success: function(weatherTemp) {
+	// $.get('#temperture').html(weatherTemp);$(document).ready(function(){
+    // $("#button").click(function(){
+    $('#submit').on("click", function(e){
+       getWeather(); 
+   	});
+	</script>
+</body>
