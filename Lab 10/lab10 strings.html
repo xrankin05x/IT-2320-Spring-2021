@@ -1,0 +1,105 @@
+
+<html>
+<head>
+    
+<style>
+  table { border-collapse: separate;
+          border-spacing: 15px;      }
+</style>
+</head>
+<body>
+<h2>Kim Rankin - IT 2320 - Lab 10</h2>
+<h3>Working with Strings and Dates</h3>
+<form>
+<table>
+	<tr>
+		<td>Select the <strong>Search Character</strong>:</td><td><select id="searchChar">
+		                               <option value=""></option>
+								       <option value="A">A</option>
+								       <option value="B">B</option>
+                                       <option value="C">C</option>
+                                       <option value="D">D</option>
+                                       <option value="E">E</option>
+                                       <option value="F">F</option>	                                   
+									   <option value="G">G</option>
+                                       <option value="H">H</option>
+                                       <option value="I">I</option>
+                                       <option value="J">J</option>
+                                       <option value="K">K</option>
+                                       <option value="L">L</option>
+                                       <option value="M">M</option>
+                                       <option value="N">N</option>
+                                       <option value="O">O</option>
+                                       <option value="P">P</option>
+                                       <option value="Q">Q</option>
+                                       <option value="R">R</option>
+                                       <option value="S">S</option>
+                                       <option value="T">T</option>
+                                       <option value="U">U</option>
+                                       <option value="V">V</option>
+                                       <option value="W">W</option>
+                                       <option value="X">X</option>
+                                       <option value="Y">Y</option>
+                                       <option value="Z">Z</option>
+								   </select>
+								</td>
+	</tr>
+	<tr>
+	    <td>Type or paste in some text:</td>
+		<td><textarea id="textArea" cols="40" rows="15"></textarea></td>
+	</tr>
+	    
+	<tr>
+	    <td>Date Modifier - Number of Days:</td><td><input type= "number" id="numDays" ></td>
+	</tr>
+    <tr>
+	    <td>Number of words entered:</td>
+		<td><span id="word_count"></span></td>
+	    
+	</tr>
+	<tr>
+	    <td>Number of occurances of the search character:</td>
+		<td><span id="searchChar_count"></span></td>
+	    
+	</tr>
+    <tr>
+	    <td>Display the entered text in <strong>ALL CAPS</strong>:</td>
+	    <td><span id="allCaps"></span></td>
+	</tr>
+    <tr>
+	    <td>Display the entered text with the search character <strong>removed</strong>:</td>
+	    <td><span id="removeSearchChar"></span></td>
+	</tr>
+    <tr>
+	    <td>Add the number of days in Date Modifier to the current date<br/>Display the resulting date as MM/DD/YYYY:</td>
+	    <td><span id="date"></span></td>
+	</tr>
+	<tr>
+		   <td><input type="reset" id="reset" name="reset" value="Reset"></td>
+           <td><input type="submit" id="submit" name="submit" value="Submit"></td>
+	</tr>
+
+</table>
+
+</form>
+	<script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	 <script>
+	    $("#submit").click(function(event){
+		      var text= $("#textArea").val().split(" ");
+		      $('#word_count').text(text.length);
+			  text= $("#textArea").val().toLowerCase().split($("#searchChar").val().toLowerCase());
+			  $('#searchChar_count').text(text.length-1);
+			  $("#allCaps").text($("#textArea").val().toUpperCase());
+			  text= $("#textArea").val().toLowerCase();
+			  var ch=$("#searchChar").val().toLowerCase();
+			  $("#removeSearchChar").text(text.replaceAll(ch,""));
+			  var now = new Date( );
+			  now.setDate(now.getDate()+ Number($("#numDays").val()));
+			  $("#date").text(now);
+			  event.preventDefault();
+           });
+		          		               
+		</script>
+</body>
+
+</html>
