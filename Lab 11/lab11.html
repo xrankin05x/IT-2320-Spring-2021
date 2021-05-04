@@ -1,0 +1,41 @@
+<html>
+<head>
+</head>
+<body>
+     <h2>Kim Rankin -IT 2320 Lab 11</h2>
+        Enter a string: <input type="text" id="dataEntered">
+         <button type="button" id="text" value="Submit">Submit</button>
+      <br /><br />
+Search for this: <input type="text" id="search">
+       <button type=button" id="searchbtn" value="Search">Search</button>
+          <br /><br />
+       <button type="button" id="sort">Sort the Array</button> <button type="button" id="reverse">Reverse the Array</button> 
+           <br /><br />
+<strong>My Array Output</strong><br/>
+         <span id="results"> *** </span>
+		 
+<script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	 <script>
+	     var array =[];
+		  $("#results").html("");
+	      $("#text").click(function(event){		      		  
+			  var dataEntered=$("#dataEntered").val();
+			  array.push(dataEntered);
+			  $("#results").html( $("#results").html() + array + "<br>");			
+           });
+		   $("#searchbtn").click(function(event){		      		  
+			  var dataEntered=$("#search").val();
+			  var index=array.findIndex(string=>string.indexOf(dataEntered)!=-1);
+			  $("#results").html( $("#results").html() + index + " " + array[index] + "<br>");			 
+           });
+		    $("#sort").click(function(event){		      		  
+			  var sorted = array.sort();			  
+			  $("#results").html( $("#results").html() + sorted + "<br>");			 
+           });  
+		   $("#reverse").click(function(event){		      		  
+			  var reverse = array.reverse();			  
+			  $("#results").html( $("#results").html() + reverse + "<br>");			 
+           });     
+		</script>
+</body>
+</html>
